@@ -62,6 +62,25 @@ machine_at_plato_init(const machine_t *model)
 }
 
 int
+machine_at_gw2kpci2_init(const machine_t *model)
+{
+    int ret;
+
+    ret = bios_load_linear_combined("roms/machines/gw2kpci2/1012ax1t.bio",
+                                    "roms/machines/gw2kpci2/1012ax1t.bi1",
+                                    0x1d000, 128);
+
+    if (bios_only || !ret)
+        return ret;
+
+    machine_at_premiere_common_init(model, PCI_CAN_SWITCH_TYPE);
+
+    device_add(&i430nx_device);
+
+    return ret;
+}
+
+int
 machine_at_ambradp90_init(const machine_t *model)
 {
     int ret;
@@ -179,6 +198,35 @@ machine_at_zappa_init(const machine_t *model)
     pci_register_slot(0x0D, PCI_CARD_NORMAL,      1, 2, 3, 4);
     pci_register_slot(0x0E, PCI_CARD_NORMAL,      3, 4, 1, 2);
     pci_register_slot(0x0F, PCI_CARD_NORMAL,      2, 3, 4, 1);
+    pci_register_slot(0x07, PCI_CARD_SOUTHBRIDGE, 0, 0, 0, 0);
+    device_add(&keyboard_ps2_intel_ami_pci_device);
+    device_add(&i430fx_device);
+    device_add(&piix_device);
+    device_add(&pc87306_device);
+    device_add(&intel_flash_bxt_ami_device);
+
+    return ret;
+}
+
+int
+machine_at_gw2kzp_init(const machine_t *model)
+{
+    int ret;
+
+    ret = bios_load_linear_combined("roms/machines/gw2kzp/1011bs0t.bio",
+                                    "roms/machines/gw2kzp/1011bs0t.bi1",
+                                    0x20000, 128);
+
+    if (bios_only || !ret)
+        return ret;
+
+    machine_at_common_init(model);
+
+    pci_init(PCI_CONFIG_TYPE_1);
+    pci_register_slot(0x00, PCI_CARD_NORTHBRIDGE, 0, 0, 0, 0);
+    pci_register_slot(0x0D, PCI_CARD_NORMAL,      1, 2, 3, 4);
+    pci_register_slot(0x0E, PCI_CARD_NORMAL,      2, 3, 4, 1);
+    pci_register_slot(0x0F, PCI_CARD_NORMAL,      3, 4, 1, 2);
     pci_register_slot(0x07, PCI_CARD_SOUTHBRIDGE, 0, 0, 0, 0);
     device_add(&keyboard_ps2_intel_ami_pci_device);
     device_add(&i430fx_device);
