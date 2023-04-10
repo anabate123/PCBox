@@ -566,12 +566,14 @@ extern int machine_at_p5sp4_init(const machine_t *);
 
 /* m_at_socket5.c */
 extern int machine_at_plato_init(const machine_t *);
+extern int machine_at_gw2kpci2_init(const machine_t *);
 extern int machine_at_ambradp90_init(const machine_t *);
 extern int machine_at_430nx_init(const machine_t *);
 
 extern int machine_at_acerv30_init(const machine_t *);
 extern int machine_at_apollo_init(const machine_t *);
 extern int machine_at_zappa_init(const machine_t *);
+extern int machine_at_gw2kzp_init(const machine_t *);
 extern int machine_at_powermatev_init(const machine_t *);
 extern int machine_at_hawk_init(const machine_t *);
 
@@ -631,6 +633,7 @@ extern int machine_at_pb810_init(const machine_t *);
 extern int machine_at_mb520n_init(const machine_t *);
 extern int machine_at_i430vx_init(const machine_t *);
 
+extern int machine_at_gw2kma_init(const machine_t *);
 extern int machine_at_nupro592_init(const machine_t *);
 extern int machine_at_tx97_init(const machine_t *);
 #if defined(DEV_BRANCH) && defined(USE_AN430TX)
@@ -669,6 +672,7 @@ extern int machine_at_aurora_init(const machine_t *);
 extern int machine_at_686nx_init(const machine_t *);
 extern int machine_at_acerv60n_init(const machine_t *);
 extern int machine_at_vs440fx_init(const machine_t *);
+extern int machine_at_gw2kvs_init(const machine_t *);
 extern int machine_at_ap440fx_init(const machine_t *);
 extern int machine_at_mb600n_init(const machine_t *);
 extern int machine_at_8600ttc_init(const machine_t *);
